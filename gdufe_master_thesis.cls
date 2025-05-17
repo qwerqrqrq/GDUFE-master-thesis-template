@@ -2,7 +2,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{gdufe_master_thesis}[2025/05/17 Master Thesis template for GDUFE v0.1.0]
-\LoadClass[zihao=-4,a4paper,oneside]{ctexbook}
+\LoadClass[zihao=-4,a4paper,towside]{ctexbook}
 \setmainfont{Times New Roman}
 % \setCJKmainfont{SimSun}
 % \setCJKmainfont{SimSun}[BoldFont = SimHei,,ItalicFont=KaiTi]
@@ -11,28 +11,20 @@
 % \setCJKmonofont{FangSong}%对应tt打字机
 
 % ---------声明变量-------------
-\tl_new:N g__whu_thesis_class_tl
+\newcommand{\masterClass}{学术} % 默认值
 
-% ---------键值对设置-------------
-\RequirePackage{xkeyval}
-\keys_define:nn{gdufe_master_thesis}{
-    class .choice:,
-    class .value_required:n = true,
-    class .choices:nn =
-      { academic, professional }
-      { \tl_gset_eq:NN \g__whu_thesis_class_tl \l_keys_choice_tl },
-    class .initial:n = academic
-}
-
-%--------biblatex 与cite upcite bibliographystyle二选一-------------
-\RequirePackage[style=gb7714-2015,backend=biber]{biblatex}
+% ---------选项设置-------------
+\DeclareOption{class=academic}{\renewcommand{\masterClass}{学术}}
+\DeclareOption{class=professional}{\renewcommand{\masterClass}{专业}}
+\ExecuteOptions{class=academic} % 设置默认选项
+\ProcessOptions\relax
 
 %%%%%%--------------------------
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions
 \newif\ifprint\printfalse
 \DeclareOption{forprint}{\printtrue}
-\ProcessOptions
+\ProcessOptions\relax
 
 
 \setlength{\baselineskip}{20pt}
@@ -50,6 +42,9 @@
     \hypersetup{citecolor=magenta,linkcolor=blue}
 \fi
 \RequirePackage[top=2.54truecm,bottom=2.54truecm,left=3truecm,right=2.2truecm,headheight=1.5truecm,footskip=1.75cm,includefoot,xetex]{geometry}    % 页面设置%
+
+%--------biblatex 与cite upcite bibliographystyle二选一-------------
+\RequirePackage[style=gb7714-2015,backend=biber]{biblatex}
 
 
 % \newtoks\Cmajor          %学科专业中文名
@@ -69,7 +64,7 @@
 \fancypagestyle{master-mainmatter}
 {
     \fancyhead{}                                    % clear all header fields
-    \fancyhead[L]{\zihao{5}广东财经大学学术学位硕士论文}
+    \fancyhead[L]{\zihao{5}广东财经大学{\masterClass}学位硕士论文}
     \fancyhead[R]{\zihao{5}\@title}
 
     \renewcommand{\headrulewidth}{0.3pt}

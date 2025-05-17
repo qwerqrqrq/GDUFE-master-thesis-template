@@ -1,8 +1,12 @@
 % !Mode:: "TeX:UTF-8"
 %% 请使用 XeLaTeX 编译本文.
-%\documentclass{gdufe_master_thesis}% 选项 forprint: 交付打印时添加, 避免彩色链接字迹打印偏淡. 即使用下一行:
 
-\documentclass[forprint]{gdufe_master_thesis}
+\documentclass[class=academic]{gdufe_master_thesis}
+% class=academic: 学术学位论文
+% class=professional: 专业学位论文
+
+%\documentclass[forprint,class=academic]{gdufe_master_thesis}% 选项 forprint: 交付打印时添加, 避免彩色链接字迹打印偏淡.
+
 % \usepackage{xeCJKfntef}
 \renewcommand{\thefigure}{\thechapter-\arabic{figure}}
 \renewcommand{\thetable}{\thechapter-\arabic{table}}
@@ -13,7 +17,7 @@
 \begin{document}
 %%%%%% 下面的内容, 据实填空.
 % 中文标题
-\title{广东财经大学学术学位硕士论文 \LaTeX 模板}
+\title{广东财经大学学术硕士论文 \LaTeX 模板}
 % 英文标题
 % \Engtitle{GDUFE Master Thesis \LaTeX  Template}
 % % 作者名字
