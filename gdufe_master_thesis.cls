@@ -2,7 +2,8 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{gdufe_master_thesis}[2025/05/17 Master Thesis template for GDUFE v0.1.0]
-\LoadClass[zihao=-4,a4paper,towside]{ctexbook}
+\LoadClass[zihao=-4,a4paper]{ctexbook}
+\PassOptionsToPackage{no-math}{fontspec}
 \setmainfont{Times New Roman}
 % \setCJKmainfont{SimSun}
 % \setCJKmainfont{SimSun}[BoldFont = SimHei,,ItalicFont=KaiTi]
@@ -225,21 +226,24 @@
 
 %%------------------------常用宏包-----------------------------------
 
-\RequirePackage{amsmath,amssymb}
-\RequirePackage[amsmath,thmmarks]{ntheorem}% AMSLaTeX宏包.
+\RequirePackage{amsmath,amssymb}.
+\RequirePackage{ntheorem}
+% \RequirePackage[amsmath,thmmarks]{ntheorem}% AMSLaTeX宏包.
 \RequirePackage{graphicx}                 % 图形
 \RequirePackage{color,xcolor}             %支持彩色
-%\RequirePackage{mathrsfs}   % 不同于\mathcal or \mathfrak 之类的英文花体字体
+\RequirePackage{mathrsfs}   % 不同于\mathcal or \mathfrak 之类的英文花体字体
 \RequirePackage{url}
 \RequirePackage{enumerate}
+\RequirePackage{pdfpages}
+\RequirePackage { fixdif }
 %%----------------------- Theorems -----------------------------------
 \theoremstyle{plain}
 \theoremheaderfont{\heiti}
-\theorembodyfont{\songti} \theoremindent 0em
+\theorembodyfont{\songti}
+\theoremindent 0em
 \theorempreskip{0pt}
 \theorempostskip{0pt}
 \theoremnumbering{arabic}
-%\theoremsymbol{} %定理结束时自动添加的标志
 \newtheorem{theo}{\hspace{2em}定理}[section]
 \newtheorem{defi}{\hspace{2em}定义}[section]
 \newtheorem{lemm}{\hspace{2em}引理}[section]
@@ -251,11 +255,13 @@
 \theoremstyle{nonumberplain}
 \theoremheaderfont{\heiti}
 \theorembodyfont{\normalfont \rm \songti}
-\theoremindent0em \theoremseparator{\hspace{1em}}
+\theoremindent 0em \theoremseparator{\hspace{1em}}
 \theoremsymbol{$\square$}
 \newenvironment{proof}{{\heiti 证明：}}{\hfill $\square$\par}
 \newenvironment{solu}{{\heiti 解:}}{\hfill $\square$\par}
 
+% \renewcommand{\proofname}{\indent\bfseries 证明}
+% \newenvironment{solution}{\begin{proof}[\indent\bf 解]}{\end{proof}}
 
 %%%%%%%-------------------------------------------------
 %%%===  suppress extra inter-line spacing in \list environments
@@ -384,6 +390,7 @@
 %%% ---- 图表标题设置 ----- %%%%
 \RequirePackage[labelsep=quad]{caption} %% 序号之后空一格写标题
 \captionsetup[figure]{font={bf,small}}  %
+\captionsetup[table]{font={bf,small}}  %
 \renewcommand\figurename{\bfseries \zihao{5} 图}
 \renewcommand\tablename{\bfseries \zihao{5} 表}
 

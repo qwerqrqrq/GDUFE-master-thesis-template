@@ -13,13 +13,14 @@
 % 使用biblatex.手写参考文献请注释掉
 \addbibresource{reference.bib}
 
-\usepackage{pdfpages}
+% \usepackage{pdfpages}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \begin{document}
 %%%%%% 下面的内容, 据实填空.
 % 中文标题
 \title{广东财经大学学术硕士论文 \LaTeX 模板}
 % 英文标题
-% \Engtitle{GDUFE Master Thesis \LaTeX  Template}
 % % 作者名字
 \author{陈晓敏}
 % % 学号
@@ -120,12 +121,12 @@ pdf 文件也可以反向搜索! 双击~pdf 中要修改的文字, 将直接跳�
 模板文件的结构与功能, 如下表所示:
 \begin{table}[ht]\centering
     \begin{tabular}{r|r|l}
-        \hline\hline
+        \hline
         \multicolumn{2}{l|}{gdufe\_master\_thesis\_template.tex } & 主文档. 在其中撰写正文.                      \\ \hline
                                                                 & frontmatter.tex           & 中英文摘要. \\ \cline{2-3}
         \raisebox{1em}{includefile 文件夹}                         & backmatter.tex            & 致谢.    \\ \hline
         \multicolumn{2}{l|}{figures 文件夹}                        & 存放图片文件.                            \\ \hline
-        \multicolumn{2}{l|}{gdufe\_master\_thesis.cls }           & 定义文档格式的 class file. 不可删除.          \\ \hline\hline
+        \multicolumn{2}{l|}{gdufe\_master\_thesis.cls }           & 定义文档格式的 class file. 不可删除.          \\ \hline
     \end{tabular}
 \end{table}
 
@@ -420,6 +421,247 @@ English \textbf{English} \textit{English}
 近年来，有研究表明\upcite{MaJiLeiWeiFenFangChengJieDeDongLiXueXingWei2024,NiLiangLeiWeiFenFangChengDeJieXiJieJiShuZhiJieYanJiu2024,ZhangXianXingCaputoXingFenShuJieSanWeiDongLiXiTongJieDeKongJianJieGouJiDongLiXueXingWei2024,zhangPainleveAnalysisBacklund2024,wangBacklundTransformationInteraction2024}
 
 注意手写参考文献和使用 biblatex 的样式有顶格不顶格的区别，由于没有详细要求，选一使用即可。
+
+
+\chapter{测试}
+
+\section{文字测试}
+
+这是武汉大学学位论文模版，欢迎使用。
+
+This is Wuhan University thesis template, welcome to use!
+
+\section{公式}
+
+\subsection{算符、希腊字母}
+
+\[\sum\prod\int\iint\alpha\beta\gamma\xi\zeta\eta\epsilon\varepsilon\theta\vartheta
+  \phi\varphi\psi\]
+
+
+\subsection{几类数学字母表}
+
+\begin{itemize}
+  \item \verb|\mathcal|: $\mathcal{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+  \item \verb|\mathscr|: $\mathscr{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+  \item \verb|\mathbb|: $\mathbb{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+\end{itemize}
+
+
+\subsection{（不）带编号单行公式}
+
+Use \texttt{equation} environment:
+\begin{equation}
+  a^2 + b^2 = c^2.
+\end{equation}
+
+Use \texttt{equation*} environment or \texttt{\textbackslash[...\textbackslash]}:
+\[ a^2 + b^2 = c^2.\]
+
+\subsection{（不）带编号多行公式}
+
+Use \texttt{align} environment:
+\begin{align}
+  S_n & = 1 + 2 + \cdots + n \\
+      & = \frac12 n(n+1).
+\end{align}
+
+Use \texttt{align*} environment:
+\begin{align*}
+  T_n & = 1^3 + 2^3 + \cdots + n^3 \\
+      & = \biggl(\frac{n(n+1)}{2}\biggr)^2 \\
+      & = S_n^2.
+\end{align*}
+
+\subsection{矩阵}
+
+\[\begin{pmatrix}
+  a_{11} & a_{22} & a_{33} \\
+  a_{21} & a_{22} & a_{23} \\
+  a_{31} & a_{32} & a_{33} \\
+\end{pmatrix} \quad
+\begin{vmatrix}
+  a_{11} & a_{22} & a_{33} \\
+  a_{21} & a_{22} & a_{23} \\
+  a_{31} & a_{32} & a_{33} \\
+\end{vmatrix} \quad
+\begin{bmatrix}
+  a_{11} & a_{22} & a_{33} \\
+  a_{21} & a_{22} & a_{23} \\
+  a_{31} & a_{32} & a_{33} \\
+\end{bmatrix} \quad
+\begin{Bmatrix}
+  a_{11} & a_{22} & a_{33} \\
+  a_{21} & a_{22} & a_{23} \\
+  a_{31} & a_{32} & a_{33} \\
+\end{Bmatrix}\]
+
+\section{脚注测试}
+
+测试 \footnote{眼看他起朱楼，眼看他宴宾客，眼看他楼塌了。这青苔碧瓦堆，俺曾睡风流觉，将五十年兴亡看饱。
+金粉未消亡，闻得六朝香，满天涯烟草断人肠。怕催花信紧，风风雨雨，误了春光。}
+
+测试 \footnote[3]{君不见，左纳言，右纳史，朝承恩，暮赐死。行路难，不在水，不在山，只在人情反覆间！}
+
+
+\section{引用测试}
+
+\subsection{参考文献}
+
+测试 \cite{whu-bachelor:1,whu-bachelor:2,whu-bachelor:3,whu-bachelor:5,whu-bachelor:7}
+
+测试 \cite*{whu-bachelor:1,whu-bachelor:2,whu-bachelor:3,whu-bachelor:7}
+
+
+
+\section{图表测试}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width = 5cm]{gdufelogo.png}
+  \caption{广东财经大学校徽}
+  \label{fig:广东财经大学校徽}
+\end{figure}
+
+引用图~\ref{fig:广东财经大学校徽}
+
+\begin{table}[ht]
+  \centering
+  \caption{%
+    简单的表格和引用 abc 123 %\cite{whu-bachelor:1}
+  }
+  \label{table:简单的表格}
+  \begin{tabular}{cc}
+    \hline
+    a & b \\ \hline
+    c & d \\ \hline
+    测试 & 文本 \\ \hline
+  \end{tabular}
+\end{table}
+
+引用表~\ref{table:简单的表格}
+
+
+\section{算法}
+
+\begin{algorithm}
+\caption{An algorithm with caption}\label{alg:cap}
+\begin{algorithmic}
+\Require $n \geq 0$
+\Ensure $y = x^n$
+\State $y \gets 1$
+\State $X \gets x$
+\State $N \gets n$
+\While{$N \neq 0$}
+\If{$N$ is even}
+    \State $X \gets X \times X$
+    \State $N \gets \frac{N}{2}$  \Comment{This is a comment}
+\ElsIf{$N$ is odd}
+    \State $y \gets y \times X$
+    \State $N \gets N - 1$
+\EndIf
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+引用 \autoref{alg:cap}
+
+\section{已定义好的一些数学定理环境}
+
+\begin{defi}[测度]
+  (参见文献xxx) 这是一段文字 $E = m c^2$  （中文括号）和 (西文括号)
+\end{defi}
+
+\begin{theo}
+  这是一段文字 $E = m c^2$
+\end{theo}
+
+\begin{proof}
+  这是一段文字 $E = m c^2$
+\end{proof}
+
+\begin{proof}[定理xx的证明]
+  这是一段文字 $E = m c^2$
+\end{proof}
+
+\begin{exam}
+  这是一段文字 $E = m c^2$
+\end{exam}
+
+\begin{prop}
+  这是一段文字 $E = m c^2$
+\end{prop}
+
+\begin{coro}
+  这是一段文字 $E = m c^2$
+\end{coro}
+
+\begin{lemm}
+  这是一段文字 $E = m c^2$
+\end{lemm}
+
+
+\begin{rema}
+  这是一段文字 $E = m c^2$
+\end{rema}
+
+\begin{theo}[Banach-Steinhaus]\label{thm:test}
+  设 $E$ 是 Banach 空间, $F$ 是赋范空间, $(u_i)_{i\in I}$ 是一族从 $E$ 到 $F$ 的有界线性算子,
+  即 $(u_i)_{i\in I}\subset \mathcal{B}(E,F)$. 若对每一点 $x\in E$, 有
+  $\sup_{i\in I} \|u_i(x)\|<\infty$, 则
+  \begin{equation}\label{eq:test1}
+    \sup_{i\in I} \|u_i\| < \infty.
+  \end{equation}
+\end{theo}
+
+我想引用定理~\ref{thm:test} 和公式~\ref{eq:test1}
+
+
+定理括号测试：
+
+\begin{theo}
+  测试
+  \begin{enumerate}
+    \item 中文（括号）没输入空格的效果
+    \item 中文 （括号） 输入空格的效果
+    \item 西文(括号)没输入空格的效果
+    \item 西文 (括号) 输入空格的效果
+  \end{enumerate}
+\end{theo}
+
+
+\begin{proof}
+  test
+  \[
+    \int_{0}^{1} x^2 \d x
+  \]
+\end{proof}
+
+% \begin{proof}
+%   test
+%   \[
+%     \int_{0}^{1} x^2 \d x \qedhere
+%   \]
+% \end{proof}
+
+
+\section{字体测试}
+字体测试：\\
+{宋体} {\heiti 黑体} {\kaishu 楷书} {\fangsong 仿宋}\\
+{\rmfamily 罗马字族} {\sffamily 无衬线字族} {\ttfamily 打字机}\\
+{\bfseries 粗体} {\itshape 意大利} {\slshape 倾斜}
+
+伪粗体测试：\\
+{\bfseries\songti 伪粗体} {\bfseries\kaishu 伪粗体} {\bfseries\heiti 伪粗体} {\bfseries\fangsong 伪粗体} {\bfseries 伪粗体}
+
+伪斜体测试：\\
+{\itshape\songti 伪斜体} {\itshape\kaishu 伪斜体} {\itshape\heiti 伪斜体} {\itshape\fangsong 伪斜体} {\itshape 伪斜体}
+
+叠加测试：\\
+{\bfseries\itshape 伪粗斜体} {\bfseries\sffamily 伪粗黑体} {\bfseries\ttfamily 伪粗仿宋} {\itshape\sffamily 伪斜黑体} {\itshape\ttfamily 伪斜仿宋}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
 %%%============正文之后的页眉页脚格式========%%%
 \cleardoublepage\phantomsection
 \pagestyle{master-frontandbackmatter}
