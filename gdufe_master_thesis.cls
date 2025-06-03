@@ -226,7 +226,7 @@
 
 %%------------------------常用宏包-----------------------------------
 
-\RequirePackage{amsmath,amssymb}.
+\RequirePackage{amsmath,amssymb}
 \RequirePackage{ntheorem}
 % \RequirePackage[amsmath,thmmarks]{ntheorem}% AMSLaTeX宏包.
 \RequirePackage{graphicx}                 % 图形
