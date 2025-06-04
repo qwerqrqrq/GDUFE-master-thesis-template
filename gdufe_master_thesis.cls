@@ -67,7 +67,6 @@
     \fancyhead{}                                    % clear all header fields
     \fancyhead[L]{\zihao{5}广东财经大学{\masterClass}学位硕士论文}
     \fancyhead[R]{\zihao{5}\@title}
-
     \renewcommand{\headrulewidth}{0.3pt}
     \fancyfoot{}                                    % clear all footer fields
     \fancyfoot[C]{\thepage}
@@ -75,7 +74,9 @@
 
 \fancypagestyle{master-frontandbackmatter}{
     \fancyhead{}
+
     \renewcommand{\headrulewidth}{0pt}
+
     \fancyfoot{}
     \fancyfoot[C]{\thepage}
 }
