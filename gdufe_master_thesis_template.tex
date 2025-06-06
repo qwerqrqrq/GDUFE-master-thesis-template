@@ -1,7 +1,7 @@
 % !Mode:: "TeX:UTF-8"
 %% 请使用 XeLaTeX 编译本文.
 
-\documentclass[class = professional]{gdufe_master_thesis}
+\documentclass[class = professional, oneside]{gdufe_master_thesis}
 % class=academic: 学术学位论文
 % class=professional: 专业学位论文
 
@@ -10,7 +10,7 @@
 % \usepackage{xeCJKfntef}
 \renewcommand{\thefigure}{\thechapter-\arabic{figure}}
 \renewcommand{\thetable}{\thechapter-\arabic{table}}
-% 使用biblatex.手写参考文献请注释掉
+% 使用biblatex.手写参考文献请注释掉下一行
 \addbibresource{reference.bib}
 
 % \usepackage{pdfpages}
@@ -39,22 +39,19 @@
 % \SignDate{~~~~~~~~年~~月~~日}
 % % \SignDate{2021年5月13日}
 %-----------------------------------------------------------------------------
-\maketitle
+\pagestyle{empty}
 \pdfbookmark[0]{封面}{title}         % 封面页加到 pdf 书签
 % 封面文件需要自己在doc文件修改后导出pdf文件，注意修改文件名。
 \includepdf[pages=-]{includefile/广东财经大学硕士学位论文封面扉页及声明格式(学术学位).pdf}
+% \maketitle
 \frontmatter
 %-----------------------------------------------------------------------------
-\pagenumbering{Roman}              % 正文之前的页码用大写罗马字母编号.
 \include{includefile/abstract.tex}    % 加入摘要.
 %==========================把目录加入到书签==============================%%%%%%
-% {\bfseries\zihao{4} 题目：\Ctitle }%
-% \pdfbookmark[0]{目录}{toc} % 目录页加到 pdf 书签
 \addcontentsline{toc}{chapter}{目录}  % 目录加入到目录
 \tableofcontents
+
 \mainmatter
-\pagestyle{master-mainmatter}
-% \fancypagestyle{plain}{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%--------main matter-------%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{撰写、编译、打印}
 
@@ -62,10 +59,10 @@
 
 \begin{description}
 
-    \item[Step 1]  进入 includefile 文件夹,  打开 frontmatter.tex, backmatter.tex 这两个文档,
+    \item[Step 1]  进入 includefile 文件夹,  打开 abstract.tex, acknowledgment.tex 这两个文档,
           分别填写 (1) 中文摘要、英文摘要, (2) 致谢.
 
-    \item[Step 2]  打开主文档 gdufe\_term\_template.tex, 填写题目、作者等等信息, 撰写正文. 主文档的文件名可以修改，但要求用英文名.
+    \item[Step 2]  打开主文档 gdufe\_master\_thesis\_template.tex, 填写题目、作者等等信息, 撰写正文. 主文档的文件名可以修改，但要求用英文名.
 
     \item[Step 3]  使用 XeLaTeX 编译. 具体见 \ref{sec-compile} 节.
 
@@ -113,8 +110,11 @@ pdf 文件也可以反向搜索! 双击~pdf 中要修改的文字, 将直接跳�
 \textbf{答}: {\kaishu 方框表示超级链接, 只在电脑上看得见. 实际打印时, 是没有的. 另外, 文档类型加选项 forprint 之后, 这些框框会隐掉的. }
 
 % \vfill
+\section{文档中的若干命令}
+\begin{enumerate}
+  \item 若删去参考文献后的\verb|\thispagestyle{plain}|命令则会导致参考文献页显示页眉
+\end{enumerate}
 
-% 如果你在使用过程中遇到什么问题，可以将问题发送到Email：{\color{blue}niltxz@126.com}.
 
 \chapter{一些细节的问题}
 
@@ -665,10 +665,11 @@ Use \texttt{align*} environment:
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
 %%%============正文之后的页眉页脚格式========%%%
-\cleardoublepage\phantomsection
-\pagestyle{master-frontandbackmatter}
+\cleardoublepage
+\phantomsection
 %%%=== 参考文献 ========%%%
 \addcontentsline{toc}{chapter}{参考文献}
+\pagestyle{plain}
 % 手写参考文献
 \begin{thebibliography}{00}
     \bibitem {huangzh}黄正华. \url{http://aff.whu.edu.cn/huangzh/}.
@@ -700,9 +701,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     Solutions of the (2+1)-Dimensional Variable-coefficient Boussinesq Equation[J]. Inter-
     national Journal of Theoretical Physics, 2024, 63(7): 160.
 \end{thebibliography}
+\thispagestyle{plain}
 
 % 使用biblatex
 \printbibliography[heading=bibintoc, title={参考文献2}]
+\thispagestyle{plain}
 %%%-------------- 附录. 不需要可以删除.-----------
 \appendix
 \chapter{攻读硕士学位期间取得的研究成果}
@@ -713,11 +716,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   \end{list}
 
 \chapter{附录测试2}
+\pagestyle{plain}
 \section{测试2.1}
+\pagestyle{plain}
 测试
 \section{测试2.2}
+\pagestyle{plain}
 测试
 \cleardoublepage
-
+\pagestyle{plain}
 \include{includefile/acknowledgment.tex} %%%致谢
 \end{document}
