@@ -409,10 +409,6 @@
 % 点线设置
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 
-
-
-
-
 % frontmatter mainmatter appendix 设置 使得自动调整章节格式
 \RequirePackage{etoolbox}  % 确保引入 etoolbox（只需一次）
 
