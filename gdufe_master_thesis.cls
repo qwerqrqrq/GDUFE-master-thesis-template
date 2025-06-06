@@ -2,14 +2,6 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{gdufe_master_thesis}[2025/05/17 Master Thesis template for GDUFE v0.1.0]
-\LoadClass[zihao=-4,a4paper]{ctexbook}
-\PassOptionsToPackage{no-math}{fontspec}
-\setmainfont{Times New Roman}
-% \setCJKmainfont{SimSun}
-% \setCJKmainfont{SimSun}[BoldFont = SimHei,,ItalicFont=KaiTi]
-\setCJKmainfont{SimSun}[AutoFakeBold={3.17},ItalicFont=KaiTi]
-% \setCJKsansfont{SimHei}%对应sf无衬线
-% \setCJKmonofont{FangSong}%对应tt打字机
 
 % ---------声明变量-------------
 \newcommand{\masterClass}{学术} % 默认值
@@ -18,17 +10,30 @@
 \DeclareOption{class=academic}{\renewcommand{\masterClass}{学术}}
 \DeclareOption{class=professional}{\renewcommand{\masterClass}{专业}}
 \ExecuteOptions{class=academic} % 设置默认选项
-\ProcessOptions\relax
 
-%%%%%%--------------------------
+% 捕获未声明的选项并传递给 ctexbook
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
-\ProcessOptions
-\newif\ifprint\printfalse
+
+\newif\ifprint
+\printfalse
 \DeclareOption{forprint}{\printtrue}
+
+\PassOptionsToClass{zihao=-4}{ctexbook}
+
+% 消除 fix diff 需要的选项
+\PassOptionsToPackage{no-math}{fontspec}
+
 \ProcessOptions\relax
+% 加载ctexbook类
+\LoadClass{ctexbook}
 
+\setmainfont{Times New Roman}
+% \setCJKmainfont{SimSun}
+% \setCJKmainfont{SimSun}[BoldFont = SimHei,,ItalicFont=KaiTi]
+\setCJKmainfont{SimSun}[AutoFakeBold={3.17},ItalicFont=KaiTi]
+% \setCJKsansfont{SimHei}%对应sf无衬线
+% \setCJKmonofont{FangSong}%对应tt打字机
 
-\setlength{\baselineskip}{20pt}
 %------------------------ Page layout ----------------------------------
 \RequirePackage{zhlineskip}
 \RequirePackage{fancyhdr}
@@ -48,41 +53,10 @@
 \RequirePackage[style=gb7714-2015,backend=biber]{biblatex}
 
 
-% \newtoks\Cmajor          %学科专业中文名
-% \newtoks\Csupervisor     %指导教师中文名
-% \newtoks\Cschoolname      %学院中文名
-% \newtoks\EnterDate      %论文提交时间
-% \newtoks\Classname      %班级名称
-% \newtoks\StudentNumber  %学号
-% \newtoks\Engtitle       %英文标题
-% \newtoks\SubmitDate     %论文提交时间
-% \newtoks\DefenseDate    %论文答辩时间
-% \newtoks\SignDate       %签字日期
-% \newcommand{\Ctitle}{\@title}
 
-% \newcommand{\Cname}{\@author}
-
-\fancypagestyle{master-mainmatter}
-{
-    \fancyhead{}                                    % clear all header fields
-    \fancyhead[L]{\zihao{5}广东财经大学{\masterClass}学位硕士论文}
-    \fancyhead[R]{\zihao{5}\@title}
-    \renewcommand{\headrulewidth}{0.3pt}
-    \fancyfoot{}                                    % clear all footer fields
-    \fancyfoot[C]{\thepage}
-}
-
-\fancypagestyle{master-frontandbackmatter}{
-    \fancyhead{}
-
-    \renewcommand{\headrulewidth}{0pt}
-
-    \fancyfoot{}
-    \fancyfoot[C]{\thepage}
-}
-
-\def\maketitle{\null\pagestyle{empty}\leavevmode }
-%%=====封面=====================
+% 重定义maketitle命令使得不会出现多余的空白页
+\def\maketitle{\null\leavevmode }
+%%=====latex 编写的封面。由于要插入的签名过多，没想好解决办法，现处于放弃状态，改为word生成pdf后插入===
 % \def\maketitle{%
 % \thispagestyle{empty}%
 % \newgeometry{top=3.7truecm,bottom=3.5truecm,left=2.8truecm,right=2.6truecm}
@@ -236,7 +210,7 @@
 \RequirePackage{url}
 \RequirePackage{enumerate}
 \RequirePackage{pdfpages}
-\RequirePackage { fixdif }
+\RequirePackage {fixdif}
 %%----------------------- Theorems -----------------------------------
 \theoremstyle{plain}
 \theoremheaderfont{\heiti}
@@ -356,6 +330,19 @@
 }
 %---------------------------------------------------
 
+
+% 设置正文页眉页脚样式，其余样式用plain 或empty
+\fancypagestyle{master-mainmatter}
+{
+    \fancyhead{}                                    % clear all header fields
+    \fancyhead[L]{\zihao{5}广东财经大学{\masterClass}学位硕士论文}
+    \fancyhead[R]{\zihao{5}\@title}
+    \renewcommand{\headrulewidth}{0.3pt}
+    \fancyfoot{}                                    % clear all footer fields
+    \fancyfoot[C]{\thepage}
+}
+
+
 %%% ---- 章节标题设置 ----- %%%%
 \ctexset{chapter={format+={\heiti\zihao{3}\raggedright},%
                     number={\arabic{chapter}},
@@ -421,6 +408,18 @@
 
 % 点线设置
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+
+
+
+
+% frontmatter mainmatter appendix 设置 使得自动调整章节格式
+\RequirePackage{etoolbox}  % 确保引入 etoolbox（只需一次）
+
+\apptocmd{\frontmatter}{\pagenumbering{Roman}}{}{}
+\apptocmd{\mainmatter}{\pagestyle{master-mainmatter}}{}{}
+\apptocmd{\appendix}{\ctexset{chapter={pagestyle={plain}}}}{}{}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \graphicspath{{figures/}}        % 图片文件路径
