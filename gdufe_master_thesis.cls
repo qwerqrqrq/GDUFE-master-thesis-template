@@ -17,22 +17,23 @@
 \newif\ifprint
 \printfalse
 \DeclareOption{forprint}{\printtrue}
-
 \PassOptionsToClass{zihao=-4}{ctexbook}
-
 % 消除 fix diff 需要的选项
 \PassOptionsToPackage{no-math}{fontspec}
-
 \ProcessOptions\relax
 % 加载ctexbook类
 \LoadClass{ctexbook}
-
+% 设置英文字体
 \setmainfont{Times New Roman}
-% \setCJKmainfont{SimSun}
-% \setCJKmainfont{SimSun}[BoldFont = SimHei,,ItalicFont=KaiTi]
-\setCJKmainfont{SimSun}[AutoFakeBold={3.17},ItalicFont=KaiTi]
-% \setCJKsansfont{SimHei}%对应sf无衬线
-% \setCJKmonofont{FangSong}%对应tt打字机
+% 设置中文字体
+\setCJKmainfont{SimSun}
+% 这个不知道能不能删，设置中文无衬线字体：
+\setCJKsansfont{SimHei}
+% 这个不知道能不能删，设置中文等宽字体：
+\setCJKmonofont{FangSong}
+
+
+
 
 %------------------------ Page layout ----------------------------------
 \RequirePackage{zhlineskip}
@@ -50,9 +51,20 @@
 \RequirePackage[top=2.54truecm,bottom=2.54truecm,left=3truecm,right=2.2truecm,headheight=1.5truecm,footskip=1.75cm,includefoot,xetex]{geometry}    % 页面设置%
 
 %--------biblatex 与cite upcite bibliographystyle二选一-------------
-\RequirePackage[style=gb7714-2015,backend=biber]{biblatex}
+\RequirePackage[style=gb7714-2015, backend=biber]{biblatex}
 
+%%------------------------常用宏包-----------------------------------
 
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{ntheorem}
+% \RequirePackage[amsmath,thmmarks]{ntheorem}% AMSLaTeX宏包.
+\RequirePackage{graphicx}                 % 图形
+\RequirePackage{color,xcolor}             %支持彩色
+\RequirePackage{mathrsfs}   % 不同于\mathcal or \mathfrak 之类的英文花体字体
+\RequirePackage{url}
+\RequirePackage{enumerate}
+\RequirePackage{pdfpages}
+\RequirePackage {fixdif}
 
 % 重定义maketitle命令使得不会出现多余的空白页
 \def\maketitle{\null\leavevmode }
@@ -199,18 +211,7 @@
 %     \@afterheading
 %     }{\par}
 
-%%------------------------常用宏包-----------------------------------
 
-\RequirePackage{amsmath,amssymb}
-\RequirePackage{ntheorem}
-% \RequirePackage[amsmath,thmmarks]{ntheorem}% AMSLaTeX宏包.
-\RequirePackage{graphicx}                 % 图形
-\RequirePackage{color,xcolor}             %支持彩色
-\RequirePackage{mathrsfs}   % 不同于\mathcal or \mathfrak 之类的英文花体字体
-\RequirePackage{url}
-\RequirePackage{enumerate}
-\RequirePackage{pdfpages}
-\RequirePackage {fixdif}
 %%----------------------- Theorems -----------------------------------
 \theoremstyle{plain}
 \theoremheaderfont{\heiti}

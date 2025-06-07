@@ -1,9 +1,9 @@
-% !Mode:: "TeX:UTF-8"
-%% 请使用 XeLaTeX 编译本文.
 
-\documentclass[class = professional, oneside]{gdufe_master_thesis}
+
+\documentclass[class = professional, oneside, AutoFakeBold=3.17,AutoFakeSlant=0.2]{gdufe_master_thesis}
 % class=academic: 学术学位论文
 % class=professional: 专业学位论文
+% AutoFakeBold=3.17,AutoFakeSlant=0.2  设置字体伪粗体和伪斜体
 
 % \documentclass[forprint,class=academic]{gdufe_master_thesis}% 选项 forprint: 交付打印时添加, 避免彩色链接字迹打印偏淡.
 
@@ -311,7 +311,7 @@ pdf 文件也可以反向搜索! 双击~pdf 中要修改的文字, 将直接跳�
 
 %%%%----- 定义等环境的举例 --------
 \begin{defi}[整数]
-    正整数(例如 1, 2, 3)、负整数(例如 ${−1}$, $−2$, $−3$)与零(0)合起来统称为{\heiti 整数}.
+    正整数(例如 1, 2, 3)、负整数(例如 ${-1}$, $-2$, $-3$)与零(0)合起来统称为{\heiti 整数}.
 \end{defi}
 
 \begin{rema}
@@ -678,19 +678,37 @@ Use \texttt{align*} environment:
 
 
 \section{字体测试}
-字体测试：\\
-{宋体} {\heiti 黑体} {\kaishu 楷书} {\fangsong 仿宋}\\
-{\rmfamily 罗马字族} {\sffamily 无衬线字族} {\ttfamily 打字机}\\
-{\bfseries 粗体} {\itshape 意大利} {\slshape 倾斜}
+字体测试：
 
-伪粗体测试：\\
-{\bfseries\songti 伪粗体} {\bfseries\kaishu 伪粗体} {\bfseries\heiti 伪粗体} {\bfseries\fangsong 伪粗体} {\bfseries 伪粗体}
+\begin{table}[ht]\centering
+    \begin{tabular}{lll}
+        \toprule
+        命令 & 宋体效果 & Times New Roman 效果 \\
+        \midrule
+        \verb|\rmfamily|   & {\rmfamily 宋体罗马字族}         & {\rmfamily Times New Roman Roman Family} \\
+        \verb|\sffamily|   & {\sffamily 宋体无衬线字族}       & {\sffamily Times New Roman Sans Serif} \\
+        \verb|\ttfamily|   & {\ttfamily 宋体打字机}           & {\ttfamily Times New Roman Typewriter} \\
+        \verb|\bfseries|   & {\bfseries 宋体加粗}             & {\bfseries Times New Roman Bold} \\
+        \verb|\itshape|    & {\itshape 宋体意大利}            & {\itshape Times New Roman Italic} \\
+        \verb|\slshape|    & {\slshape 宋体倾斜}              & {\slshape Times New Roman Slanted} \\
+        \bottomrule
+    \end{tabular}
+    \caption{宋体与 Times New Roman 字体命令效果对比}
+\end{table}
 
-伪斜体测试：\\
-{\itshape\songti 伪斜体} {\itshape\kaishu 伪斜体} {\itshape\heiti 伪斜体} {\itshape\fangsong 伪斜体} {\itshape 伪斜体}
-
-叠加测试：\\
-{\bfseries\itshape 伪粗斜体} {\bfseries\sffamily 伪粗黑体} {\bfseries\ttfamily 伪粗仿宋} {\itshape\sffamily 伪斜黑体} {\itshape\ttfamily 伪斜仿宋}
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ccccc}
+        \toprule
+        测试类型 & {\songti 宋体}             & {\heiti 黑体}                    & {\kaishu 楷书}                    & {\fangsong 仿宋}                    \\
+        \midrule
+        伪粗体  & {\bfseries 伪粗体}          & {\bfseries\heiti 伪粗体}          & {\bfseries\kaishu 伪粗体}          & {\bfseries\fangsong 伪粗体}          \\
+        伪斜体  & {\itshape 伪斜体}           & {\itshape\heiti 伪斜体}           & {\itshape\kaishu 伪斜体}           & {\itshape\fangsong 伪斜体}           \\
+        叠加测试 & {\bfseries\itshape 伪粗斜体} & {\bfseries\itshape\heiti 伪粗斜体} & {\bfseries\itshape\kaishu 伪粗斜体} & {\bfseries\itshape\fangsong 伪粗斜体} \\
+        \bottomrule
+    \end{tabular}
+    \caption{不同字体下伪粗体、伪斜体及叠加效果测试}
+\end{table}
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
